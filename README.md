@@ -17,7 +17,7 @@ https://drive.google.com/file/d/162sFiAKuIbvBNpBPAMAnINd0IXOP03IF/view?usp=shari
 
 A production-grade, AI-powered inventory management system leveraging AWS Bedrock multi-agent architecture to provide intelligent stockout predictions, automated replenishment planning, anomaly detection, and dynamic pricing strategies.
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Business Use Case](#business-use-case)
@@ -33,7 +33,7 @@ A production-grade, AI-powered inventory management system leveraging AWS Bedroc
 
 ---
 
-## 🎯 Overview
+## Overview
 
 ### Purpose
 
@@ -57,7 +57,7 @@ The Multi-Agent AI Inventory Management System addresses critical challenges in 
 
 ---
 
-## 💼 Business Use Case
+## Business Use Case
 
 ### Problem Statement
 
@@ -144,7 +144,7 @@ Traditional inventory management systems face several critical challenges:
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 ### High-Level Architecture
 ```
@@ -358,7 +358,7 @@ Traditional inventory management systems face several critical challenges:
 
 ---
 
-## ⚙️ Functional Breakdown
+## Functional Breakdown
 
 ### AI Agents
 
@@ -831,7 +831,7 @@ return {
 
 ---
 
-## 🔧 Technical Implementation
+## Technical Implementation
 
 ### Technology Stack
 
@@ -1198,7 +1198,7 @@ inventory-agent-router → inventory-query-tool → DynamoDB
 
 ---
 
-## 🚧 Challenges & Resolutions
+## Challenges & Resolutions
 
 ### Challenge 1: Bedrock Agent Model Access
 
@@ -1227,11 +1227,11 @@ Configure Bedrock agents to use Claude Sonnet 4.5 and validate agent responses m
 8. Re-prepared all agents and validated functionality
 
 **Result**:
-- ✅ All 5 agents operational with Claude 3 Haiku
-- ✅ Average response time: 6-10 seconds (well within 30s timeout)
-- ✅ Response quality: 95%+ user satisfaction in testing
-- ✅ Cost reduction: 12× lower than Sonnet 4.5 ($0.25 vs $3 per MTok input)
-- ✅ Monthly savings: $4,000+ at production scale (10K invocations/month)
+- All 5 agents operational with Claude 3 Haiku
+- Average response time: 6-10 seconds (well within 30s timeout)
+- Response quality: 95%+ user satisfaction in testing
+- Cost reduction: 12× lower than Sonnet 4.5 ($0.25 vs $3 per MTok input)
+- Monthly savings: $4,000+ at production scale (10K invocations/month)
 
 **Lessons Learned**:
 - Always verify model availability and requirements in target region
@@ -1288,7 +1288,7 @@ Enable Bedrock agents to successfully invoke tool Lambda functions (`inventory-q
 ```
      - Waited 30 seconds
      - Re-prepared Bedrock agent (forces policy refresh)
-     - Result: ✅ Success!
+     - Result: Success!
 
 4. Validation:
    - Tested agent with query: "Show me items at stockout risk"
@@ -1302,11 +1302,11 @@ Enable Bedrock agents to successfully invoke tool Lambda functions (`inventory-q
    - Created validation script to check all permissions before agent creation
 
 **Result**:
-- ✅ Router Lambda can invoke all tool Lambdas
-- ✅ All 5 agents operational with full tool access
-- ✅ End-to-end workflow validated: User → API → Agent → Router → Tools → DynamoDB → Response
-- ✅ Created reusable inline policy pattern for future Lambda-to-Lambda invocations
-- ✅ Documented IAM propagation timing: inline (30-60s) vs managed (2-5 minutes)
+- Router Lambda can invoke all tool Lambdas
+- All 5 agents operational with full tool access
+- End-to-end workflow validated: User → API → Agent → Router → Tools → DynamoDB → Response
+- Created reusable inline policy pattern for future Lambda-to-Lambda invocations
+- Documented IAM propagation timing: inline (30-60s) vs managed (2-5 minutes)
 
 **Lessons Learned**:
 - IAM policy changes have propagation delays; always wait 30-60s and re-prepare agents
@@ -1383,17 +1383,17 @@ Fix tool Lambda functions to correctly parse parameters from Bedrock agent reque
    - Forced agent re-preparation to clear any cached schemas
 
 6. Comprehensive testing:
-   - Test 1: "Show stockout risks" → ✅ Returned 2 items (correct)
-   - Test 2: "Filter by category Lights" → ✅ Returned 7 light items
-   - Test 3: "Generate replenishment plan" → ✅ Calculated correct quantities
-   - Test 4: "Get vendor info for VEND-001" → ✅ Returned Holiday Supplies Inc details
+   - Test 1: "Show stockout risks" → Returned 2 items (correct)
+   - Test 2: "Filter by category Lights" → Returned 7 light items
+   - Test 3: "Generate replenishment plan" → Calculated correct quantities
+   - Test 4: "Get vendor info for VEND-001" → Returned Holiday Supplies Inc details
 
 **Result**:
-- ✅ All tool Lambdas correctly parse Bedrock agent request format
-- ✅ Agents receive accurate data based on user queries
-- ✅ Complex queries with multiple parameters work correctly
-- ✅ Created reusable parsing utility function for future tools
-- ✅ 100% test pass rate across 20+ query scenarios
+- All tool Lambdas correctly parse Bedrock agent request format
+- Agents receive accurate data based on user queries
+- Complex queries with multiple parameters work correctly
+- Created reusable parsing utility function for future tools
+- 100% test pass rate across 20+ query scenarios
 
 **Lessons Learned**:
 - Bedrock agent request format differs significantly from direct Lambda invocations
@@ -1454,10 +1454,10 @@ Diagnose and resolve the Markdown Coach agent failure, ensuring all 5 agents ope
 3. Root cause analysis:
    - Reviewed `InlineLambdaInvokePermission` policy
    - Policy created during Challenge 2 only included 3 tool Lambdas:
-     - inventory-query-tool ✅
-     - inventory-replenishment-tool ✅
-     - inventory-vendor-info-tool ✅
-   - Missing: inventory-markdown-calculator ❌
+     - inventory-query-tool 
+     - inventory-replenishment-tool 
+     - inventory-vendor-info-tool 
+   - Missing: inventory-markdown-calculator 
    - Reason: Markdown calculator Lambda created later, policy not updated
 
 4. Direct Lambda test:
@@ -1465,7 +1465,7 @@ Diagnose and resolve the Markdown Coach agent failure, ensuring all 5 agents ope
 ```bash
      aws lambda invoke --function-name inventory-markdown-calculator --payload '...' response.json
 ```
-   - Result: ✅ Lambda worked correctly, returned markdown recommendations
+   - Result: Lambda worked correctly, returned markdown recommendations
    - Confirmed: Issue is permissions only, not Lambda code
 
 5. Policy update:
@@ -1499,7 +1499,7 @@ Diagnose and resolve the Markdown Coach agent failure, ensuring all 5 agents ope
 
 7. Validation testing:
    - Test query: "Identify slow-moving inventory and recommend markdown strategies"
-   - Result: ✅ Success!
+   - Result: Success!
    - Response:
 ```
      Based on the slow-moving inventory I identified, here are my markdown recommendations:
@@ -1514,11 +1514,11 @@ Diagnose and resolve the Markdown Coach agent failure, ensuring all 5 agents ope
 ```
 
 **Result**:
-- ✅ Markdown Coach agent fully operational
-- ✅ All 5 agents successfully tested and deployed
-- ✅ Updated IAM policy checklist to include "verify all tool Lambdas before agent creation"
-- ✅ Created automation script to ensure all tool Lambdas have invoke permissions
-- ✅ Complete multi-agent system operational
+-  Markdown Coach agent fully operational
+-  All 5 agents successfully tested and deployed
+-  Updated IAM policy checklist to include "verify all tool Lambdas before agent creation"
+-  Created automation script to ensure all tool Lambdas have invoke permissions
+-  Complete multi-agent system operational
 
 **Lessons Learned**:
 - IAM policies must be updated when new tool Lambdas are added
@@ -1553,8 +1553,8 @@ Debug and fix the stats endpoint so the frontend dashboard displays dynamic stat
 **Action**:
 1. Initial investigation:
    - Frontend console showed: `GET https://.../agents/stats 404 Missing Authentication Token`
-   - Verified Lambda exists: `aws lambda get-function --function-name api-get-stats` ✅
-   - Verified Lambda works: Direct invocation returned correct stats ✅
+   - Verified Lambda exists: `aws lambda get-function --function-name api-get-stats` 
+   - Verified Lambda works: Direct invocation returned correct stats 
    - Conclusion: API Gateway routing issue
 
 2. API Gateway resource inspection:
@@ -1566,9 +1566,9 @@ Debug and fix the stats endpoint so the frontend dashboard displays dynamic stat
 ```
      /
      /agents
-     /agents/list ✅
-     /agents/invoke ✅
-     /agents/stats ✅
+     /agents/list 
+     /agents/invoke 
+     /agents/stats 
 ```
    - Resource exists! But still returning 404
    - Hypothesis: Method or integration not configured
@@ -1578,13 +1578,13 @@ Debug and fix the stats endpoint so the frontend dashboard displays dynamic stat
 ```bash
      aws apigateway get-method --rest-api-id $API_ID --resource-id <resource-id> --http-method GET
 ```
-   - Result: Method exists with correct Lambda integration ✅
-   - Integration URI: `arn:aws:apigateway:us-east-1:lambda:.../api-get-stats` ✅
+   - Result: Method exists with correct Lambda integration 
+   - Integration URI: `arn:aws:apigateway:us-east-1:lambda:.../api-get-stats` 
    - Still failing... What's missing?
 
 4. Deployment status check:
    - Realized: API Gateway changes require deployment to stage
-   - Checked latest deployment timestamp: Before stats endpoint creation ❌
+   - Checked latest deployment timestamp: Before stats endpoint creation 
    - Root cause: Created resource/method but never deployed to `prod` stage
 
 5. Deployment + permission fix:
@@ -1597,7 +1597,7 @@ Debug and fix the stats endpoint so the frontend dashboard displays dynamic stat
 ```bash
      aws lambda get-policy --function-name api-get-stats
 ```
-   - Result: No policy found ❌
+   - Result: No policy found 
    - Added API Gateway invoke permission:
 ```bash
      aws lambda add-permission \
@@ -1618,7 +1618,7 @@ Debug and fix the stats endpoint so the frontend dashboard displays dynamic stat
 ```bash
      curl https://<API_ID>.execute-api.us-east-1.amazonaws.com/prod/agents/stats
 ```
-   - Result: ✅ Success!
+   - Result: Success!
 ```json
      {
        "success": true,
@@ -1635,15 +1635,15 @@ Debug and fix the stats endpoint so the frontend dashboard displays dynamic stat
 7. Frontend validation:
    - Rebuilt React app with updated API calls
    - Deployed to S3
-   - Loaded dashboard: ✅ Stats displayed correctly!
+   - Loaded dashboard: Stats displayed correctly!
    - Verified dynamic updates: Refreshing page fetches latest data from DynamoDB
 
 **Result**:
-- ✅ Stats endpoint operational: GET /agents/stats
-- ✅ Lambda permission correctly configured for API Gateway invocation
-- ✅ Frontend dashboard displays real-time statistics
-- ✅ Dashboard shows: 30 SKUs, 13 stockout risks, 9 categories (all accurate)
-- ✅ Created deployment checklist for future API Gateway changes
+- Stats endpoint operational: GET /agents/stats
+- Lambda permission correctly configured for API Gateway invocation
+- Frontend dashboard displays real-time statistics
+- Dashboard shows: 30 SKUs, 13 stockout risks, 9 categories (all accurate)
+- Created deployment checklist for future API Gateway changes
 
 **Lessons Learned**:
 - API Gateway changes require explicit deployment to stages (not automatic)
@@ -1737,13 +1737,13 @@ Make monitoring scripts cross-platform compatible (macOS and Linux) to enable lo
 
 5. Testing across platforms:
    - macOS testing:
-     - `./cost-analysis.sh` ✅ Calculated dates correctly
-     - `./optimize-lambda.sh` ✅ Retrieved CloudWatch metrics
-     - `./health-check.sh` ✅ All checks passed
+     - `./cost-analysis.sh` Calculated dates correctly
+     - `./optimize-lambda.sh` Retrieved CloudWatch metrics
+     - `./health-check.sh` All checks passed
    
    - Linux compatibility verification (EC2 t2.micro):
      - Uploaded scripts via SCP
-     - Executed: ❌ Failed (expected, optimized for macOS)
+     - Executed: Failed (expected, optimized for macOS)
      - Created Linux-specific versions in `/scripts/linux/`
      - Documented platform differences in README
 
@@ -1764,12 +1764,12 @@ Make monitoring scripts cross-platform compatible (macOS and Linux) to enable lo
 ```
 
 **Result**:
-- ✅ All monitoring scripts functional on macOS
-- ✅ Created Linux-compatible versions for production
-- ✅ Cost analysis shows: 1,000 Lambda invocations, 300 API requests, $19.30/month
-- ✅ Lambda optimization identifies memory recommendations
-- ✅ Health checks validate all system components
-- ✅ Documented platform differences to prevent future confusion
+- All monitoring scripts functional on macOS
+- Created Linux-compatible versions for production
+- Cost analysis shows: 1,000 Lambda invocations, 300 API requests, $19.30/month
+- Lambda optimization identifies memory recommendations
+- Health checks validate all system components
+- Documented platform differences to prevent future confusion
 
 **Lessons Learned**:
 - Always consider cross-platform compatibility when creating shell scripts
@@ -1803,14 +1803,14 @@ fi
 #### Performance Benchmarks
 
 **API Response Times** (average, 50 test queries):
-- `/agents/list`: 120ms (acceptable: <500ms) ✅
-- `/agents/stats`: 350ms (includes full DynamoDB scan) ✅
+- `/agents/list`: 120ms (acceptable: <500ms) 
+- `/agents/stats`: 350ms (includes full DynamoDB scan) 
 - `/agents/invoke`:
-  - Stockout Sentinel: 8.2s (acceptable: <15s) ✅
-  - Replenishment Planner: 11.5s (complex calculations) ✅
-  - Exception Investigator: 9.8s ✅
-  - Markdown Coach: 10.2s ✅
-  - Inventory Copilot: 7.5s (fastest, single tool call) ✅
+  - Stockout Sentinel: 8.2s (acceptable: <15s) 
+  - Replenishment Planner: 11.5s (complex calculations) 
+  - Exception Investigator: 9.8s 
+  - Markdown Coach: 10.2s 
+  - Inventory Copilot: 7.5s (fastest, single tool call) 
 
 **Lambda Execution Times**:
 - `inventory-query-tool`: 180ms average
@@ -1991,24 +1991,24 @@ Payback Period = 2.9 months
 ### Lessons for Enterprise Deployment
 
 **Technical Best Practices**:
-1. ✅ Use inline IAM policies for time-sensitive permissions (faster propagation)
-2. ✅ Always re-prepare Bedrock agents after infrastructure changes
-3. ✅ Implement comprehensive CloudWatch logging for troubleshooting
-4. ✅ Set up X-Ray tracing from day one (invaluable for debugging multi-service flows)
-5. ✅ Use on-demand billing for DynamoDB in variable-load scenarios
+1. Use inline IAM policies for time-sensitive permissions (faster propagation)
+2. Always re-prepare Bedrock agents after infrastructure changes
+3. Implement comprehensive CloudWatch logging for troubleshooting
+4. Set up X-Ray tracing from day one (invaluable for debugging multi-service flows)
+5. Use on-demand billing for DynamoDB in variable-load scenarios
 
 **Architectural Decisions**:
-1. ✅ Router Lambda pattern simplifies agent-to-tool integration (single permission point)
-2. ✅ Claude 3 Haiku is cost-effective and performant for structured tasks
-3. ✅ Separate Lambda per tool enables independent scaling and monitoring
-4. ✅ API Gateway + Lambda + DynamoDB is production-ready for <10K requests/day
+1. Router Lambda pattern simplifies agent-to-tool integration (single permission point)
+2. Claude 3 Haiku is cost-effective and performant for structured tasks
+3. Separate Lambda per tool enables independent scaling and monitoring
+4. API Gateway + Lambda + DynamoDB is production-ready for <10K requests/day
 
 **Operational Readiness**:
-1. ✅ Create health check scripts for daily operations
-2. ✅ Set up CloudWatch alarms for critical metrics (errors, latency)
-3. ✅ Document all IAM roles and policies for security audits
-4. ✅ Implement cost monitoring and budget alerts
-5. ✅ Provide user training and documentation
+1. Create health check scripts for daily operations
+2. Set up CloudWatch alarms for critical metrics (errors, latency)
+3. Document all IAM roles and policies for security audits
+4. Implement cost monitoring and budget alerts
+5. Provide user training and documentation
 
 **Scalability Considerations**:
 1. Consider ElastiCache for caching if query patterns are repetitive (>50K requests/day)
@@ -2019,7 +2019,7 @@ Payback Period = 2.9 months
 
 ---
 
-## 🚀 Future Enhancements
+## Future Enhancements
 
 ### Phase 2: Enhanced Intelligence (Q2 2026)
 
@@ -2256,7 +2256,7 @@ Payback Period = 2.9 months
 
 ---
 
-## 🎬 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -2338,13 +2338,13 @@ aws s3 sync build/ s3://<bucket-name>/
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see [LICENSE](./LICENSE) file for details.
 
 ---
 
-## 👨‍💻 Authors & Acknowledgments
+## Authors & Acknowledgments
 
 **Project Lead**: Siddharaj Deshmukh  
 **Organization**: Personal Project / Portfolio Demonstration  
