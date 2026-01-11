@@ -2,9 +2,12 @@
 # Built using AWS Bedrock, Lambda, DynamoDB, and React
 
 
-**Project Developed by**: Siddharaj Deshmukh  
+**Developed by**: Siddharaj Deshmukh  
 **Organization**: Personal Project / Portfolio Demonstration  
 **Contact**: https://www.linkedin.com/in/siddharajdeshmukh/
+
+**Demo**:
+https://drive.google.com/file/d/162sFiAKuIbvBNpBPAMAnINd0IXOP03IF/view?usp=sharing
 
 
 ![System Status](https://img.shields.io/badge/status-production-green)
