@@ -66,11 +66,11 @@ Traditional inventory management systems face several critical challenges:
 4. **Inventory Obsolescence**: Aged inventory identified too late, forcing deep discounts or write-offs
 5. **Decision Latency**: Complex queries require technical expertise and hours of analysis
 
-### Solution Approach
+# Solution Approach
 
-Deploy five specialized AI agents, each with domain expertise:
+## Deploy $\color{violet}{\text{five}}$ specialized AI agents, each with domain expertise:
 
-#### 1. **Stockout Sentinel Agent**
+## 1. **$\color{orange}{\text{Stockout Sentinel Agent}}$**
 **Purpose**: Proactive risk detection and early warning system
 
 **Business Value**:
@@ -82,7 +82,7 @@ Deploy five specialized AI agents, each with domain expertise:
 **Use Case Example**:
 > "Premium 6ft Christmas Tree will stock out in 1.9 days with a $1,349 revenue exposure. Recommend expediting vendor order and increasing price 10% to reduce demand."
 
-#### 2. **Replenishment Planner Agent**
+## 2. **$\color{green}{\text{Replenishment Planner Agent}}$**
 **Purpose**: Automated purchase order generation and optimization
 
 **Business Value**:
@@ -94,7 +94,7 @@ Deploy five specialized AI agents, each with domain expertise:
 **Use Case Example**:
 > "Order 177 units of Christmas Trees ($15,928) and 180 units of Ornaments ($945) from Holiday Supplies Inc. Total order: $16,873. Arrival: Jan 19. This maintains 14-day safety stock."
 
-#### 3. **Exception Investigator Agent**
+## 3. **$\color{blue}{\text{Exception Investigator Agent}}$**
 **Purpose**: Data quality assurance and anomaly detection
 
 **Business Value**:
@@ -106,7 +106,7 @@ Deploy five specialized AI agents, each with domain expertise:
 **Use Case Example**:
 > "Christmas Tree has 8 units/day velocity but only 25 unit reorder point (3.1 days). This suggests either incorrect reorder point or understated velocity. Recommend reviewing historical sales data."
 
-#### 4. **Markdown & Clearance Coach Agent**
+## 4. **$\color{yellow}{\text{Markdown and Clearance Coach Agent}}$**
 **Purpose**: Revenue recovery from slow-moving inventory
 
 **Business Value**:
@@ -118,7 +118,7 @@ Deploy five specialized AI agents, each with domain expertise:
 **Use Case Example**:
 > "Christmas Tree has 180+ days supply. Recommend aggressive 50% clearance markdown. Expected to improve velocity 3x and clear inventory in 60 days, recovering $2,700 vs. $1,350 in holding costs."
 
-#### 5. **Inventory Copilot Agent**
+## 5. **$\color{white}{\text{Inventory Copilot Agent}}$**
 **Purpose**: Conversational intelligence and ad-hoc analysis
 
 **Business Value**:
